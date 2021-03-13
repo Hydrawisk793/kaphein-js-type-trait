@@ -1,6 +1,5 @@
 module.exports = (function ()
 {
-    var _hasOwnProperty = Object.prototype.hasOwnProperty;
     var _toString = Object.prototype.toString;
 
     /**
@@ -68,10 +67,11 @@ module.exports = (function ()
         return isArray(v)
             || (
                 isNonNullObject(v)
-                && (_hasOwnProperty.call(v, "length") && "number" === typeof v.length)
+                && ("length" in v)
+                && Number.isInteger(v.length)
                 && (
-                    v.length === 0
-                    || (v.length > 0 && (v.length - 1) in v)
+                    0 === v.length
+                    || (v.length > 0 && ((v.length - 1) in v))
                 )
             )
         ;
