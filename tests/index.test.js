@@ -137,7 +137,7 @@ describe("kaphein-js-type-trait", function ()
             expect(isArrayLike(new Array(5))).to.equal(true);
         });
 
-        it("should return true on an array-like object.", function ()
+        it("should return true on array-like objects.", function ()
         {
             const obj = {};
             obj[0] = 3;
@@ -146,6 +146,25 @@ describe("kaphein-js-type-trait", function ()
             obj.length = 3;
 
             expect(isArrayLike(obj)).to.equal(true);
+
+            class A
+            {
+                constructor(iterable)
+                {
+                    this.length = 0;
+                    for(let item of iterable)
+                    {
+                        this[this.length] = item;
+                        ++this.length;
+                    }
+                }
+            }
+            const iterable = [1, 4, 5, 2, 9];
+            expect(isArrayLike(new A(iterable))).to.equal(true);
+
+            class B extends A
+            {}
+            expect(isArrayLike(new B(iterable))).to.equal(true);
         });
     });
 
