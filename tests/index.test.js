@@ -7,6 +7,7 @@ describe("kaphein-js-type-trait", function ()
     describe("isString", require("./suites/is-string.test").bind(this));
     describe("isArray", require("./suites/is-array.test").bind(this));
     describe("isArrayLike", require("./suites/is-array-like.test").bind(this));
+    describe("isArguments", require("./suites/is-arguments.test").bind(this));
     describe("isFunction", require("./suites/is-function.test").bind(this));
     describe("isCallable", require("./suites/is-callable.test").bind(this));
     describe("isIterable", require("./suites/is-iterable.test").bind(this));
