@@ -15,6 +15,11 @@ module.exports = function ()
         expect(isArrayLike(new Array(5))).to.equal(true);
     });
 
+    it("should return true on the arguments object.", function ()
+    {
+        expect(isArrayLike(arguments)).to.equal(true);
+    });
+
     it("should return true on array-like objects.", function ()
     {
         const obj = {};
