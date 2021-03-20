@@ -1,5 +1,5 @@
 var primitiveTypeTrait = require("./primitive-type-trait");
-var isDefinedAndNotNull = primitiveTypeTrait.isDefinedAndNotNull;
+var isNonNullObject = primitiveTypeTrait.isNonNullObject;
 var isFunction = primitiveTypeTrait.isFunction;
 
 module.exports = (function ()
@@ -13,9 +13,12 @@ module.exports = (function ()
         return (
             isFunction(v)
             || (
-                isDefinedAndNotNull(v)
-                && ("call" in v)
-                && isFunction(v.call)
+                isNonNullObject(v)
+                && (
+                    (("call" in v) && isFunction(v.call))
+                    && (("apply" in v) && isFunction(v.apply))
+                    && (("bind" in v) && isFunction(v.bind))
+                )
             )
         );
     }
