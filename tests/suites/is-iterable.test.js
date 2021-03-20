@@ -26,6 +26,19 @@ module.exports = function ()
         expect(isIterable(new String("foo"))).to.equal(true);
     });
 
+    it("should return true on an instance of a class that inherits String class.", function ()
+    {
+        class Foo extends String
+        {
+            get [Symbol.toStringTag]()
+            {
+                return "Foo";
+            }
+        }
+
+        expect(isIterable(new Foo("foo"))).to.equal(true);
+    });
+
     it("should return true on arrays.", function ()
     {
         expect(isIterable([])).to.equal(true);
