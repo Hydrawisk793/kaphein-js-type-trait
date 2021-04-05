@@ -1,6 +1,5 @@
 var primitiveTypeTrait = require("./primitive-type-trait");
-var isNonNullObject = primitiveTypeTrait.isNonNullObject;
-var isFunction = primitiveTypeTrait.isFunction;
+var isReferenceType = primitiveTypeTrait.isReferenceType;
 
 module.exports = (function ()
 {
@@ -14,7 +13,7 @@ module.exports = (function ()
 
         if(
             ("function" === typeof Symbol && ("toStringTag" in Symbol))
-            && (isNonNullObject(v) || isFunction(v))
+            && isReferenceType(v)
             && (Symbol.toStringTag in v)
         )
         {
