@@ -65,6 +65,15 @@ module.exports = (function ()
         return "function" === typeof v || v instanceof Function;
     }
 
+    /**
+     *  @param {any} v
+     *  @returns {v is (object | Function)}
+     */
+    function isReferenceType(v)
+    {
+        return Object(v) === v;
+    }
+
     return {
         isUndefined : isUndefined,
         isDefinedAndNotNull : isDefinedAndNotNull,
@@ -72,6 +81,7 @@ module.exports = (function ()
         isNumber : isNumber,
         isString : isString,
         isArray : isArray,
-        isFunction : isFunction
+        isFunction : isFunction,
+        isReferenceType : isReferenceType
     };
 })();

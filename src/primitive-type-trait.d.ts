@@ -29,3 +29,7 @@ export declare function isArray<
 export declare function isFunction(
     v : any
 ) : v is Function;
+
+export declare function isReferenceType(
+    v : any
+) : v is (object | Function);

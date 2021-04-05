@@ -12,5 +12,6 @@ describe("kaphein-js-type-trait", function ()
     describe("isCallable", require("./suites/is-callable.test").bind(this));
     describe("isIterable", require("./suites/is-iterable.test").bind(this));
     describe("isPromiseLike", require("./suites/is-promise-like.test").bind(this));
+    describe("isReferenceType", require("./suites/is-reference-type.test").bind(this));
     describe("getToStringTag", require("./suites/get-to-string-tag.test").bind(this));
 });
