@@ -1,5 +1,5 @@
 var primitiveTypeTrait = require("./primitive-type-trait");
-var isNonNullObject = primitiveTypeTrait.isNonNullObject;
+var isReferenceType = primitiveTypeTrait.isReferenceType;
 var isFunction = primitiveTypeTrait.isFunction;
 
 module.exports = (function ()
@@ -9,7 +9,7 @@ module.exports = (function ()
      */
     function isPromiseLike(v)
     {
-        return isNonNullObject(v)
+        return isReferenceType(v)
             && ("then" in v)
             && isFunction(v.then)
         ;
