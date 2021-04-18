@@ -1,6 +1,6 @@
 {
     "name": "kaphein-js-type-trait",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "A set of type trait utilities.",
     "author": "Hydrawisk793 <hyw793@gmail.com>",
     "license": "MIT",
