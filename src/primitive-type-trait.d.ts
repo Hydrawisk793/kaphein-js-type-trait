@@ -33,3 +33,7 @@ export declare function isFunction(
 export declare function isReferenceType(
     v : any
 ) : v is (object | Function);
+
+export declare function isPrimitiveType(
+    v : any
+) : v is (string | number | boolean | bigint | symbol | null | undefined);
