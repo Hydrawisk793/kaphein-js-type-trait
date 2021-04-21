@@ -1,6 +1,5 @@
 var primitiveTypeTrait = require("./primitive-type-trait");
 var isReferenceType = primitiveTypeTrait.isReferenceType;
-var isFunction = primitiveTypeTrait.isFunction;
 
 module.exports = (function ()
 {
@@ -11,7 +10,6 @@ module.exports = (function ()
     {
         return isReferenceType(v)
             && ("then" in v)
-            && isFunction(v.then)
         ;
     }
 
