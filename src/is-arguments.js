@@ -1,5 +1,3 @@
-var primitiveTypeTrait = require("./primitive-type-trait");
-var isFunction = primitiveTypeTrait;
 var isArrayLike = require("./is-array-like").isArrayLike;
 
 module.exports = (function ()
@@ -26,10 +24,7 @@ module.exports = (function ()
                 {
                     return (
                         isArrayLike(v)
-                        && (
-                            Object.prototype.hasOwnProperty.call(v, "callee")
-                            && isFunction(v.callee)
-                        )
+                        && Object.prototype.hasOwnProperty.call(v, "callee")
                     );
                 }
             );
