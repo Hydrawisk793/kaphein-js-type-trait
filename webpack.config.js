@@ -12,8 +12,11 @@ module.exports = (function ()
         output : {
             filename : "index.js",
             path : path.resolve(__dirname, outputDirectoryName),
-            library : "kapheinJsTypeTrait",
-            libraryTarget : "umd",
+            library : {
+                name : "kapheinJsTypeTrait",
+                type : "umd",
+                umdNamedDefine : true
+            },
             globalObject : "this"
         },
         plugins : [
