@@ -1,10 +1,23 @@
-module.exports = Object.assign(
-    {},
-    require("./primitive-type-trait"),
-    require("./is-array-like"),
-    require("./is-arguments"),
-    require("./is-callable"),
-    require("./is-iterable"),
-    require("./is-promise-like"),
-    require("./get-to-string-tag")
-);
+var primitiveTypeTrait = require("./primitive-type-trait");
+var isArrayLike = require("./is-array-like").isArrayLike;
+var isArguments = require("./is-arguments").isArguments;
+var isCallable = require("./is-callable").isCallable;
+var isIterable = require("./is-iterable").isIterable;
+var isPromiseLike = require("./is-promise-like").isPromiseLike;
+var getToStringTag = require("./get-to-string-tag").getToStringTag;
+
+exports.isUndefined = primitiveTypeTrait.isUndefined;
+exports.isDefinedAndNotNull = primitiveTypeTrait.isDefinedAndNotNull;
+exports.isNonNullObject = primitiveTypeTrait.isNonNullObject;
+exports.isNumber = primitiveTypeTrait.isNumber;
+exports.isString = primitiveTypeTrait.isString;
+exports.isArray = primitiveTypeTrait.isArray;
+exports.isFunction = primitiveTypeTrait.isFunction;
+exports.isReferenceType = primitiveTypeTrait.isReferenceType;
+exports.isPrimitiveType = primitiveTypeTrait.isPrimitiveType;
+exports.isArrayLike = isArrayLike;
+exports.isArguments = isArguments;
+exports.isCallable = isCallable;
+exports.isIterable = isIterable;
+exports.isPromiseLike = isPromiseLike;
+exports.getToStringTag = getToStringTag;
