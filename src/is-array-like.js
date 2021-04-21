@@ -10,17 +10,23 @@ module.exports = (function ()
      */
     function isArrayLike(v)
     {
-        return isArray(v)
-            || (
-                isNonNullObject(v)
-                && ("length" in v)
-                && Number.isInteger(v.length)
-                && (
-                    0 === v.length
-                    || (v.length > 0 && ((v.length - 1) in v))
-                )
-            )
-        ;
+        var result = isArray(v);
+        if(!result)
+        {
+            result = isNonNullObject(v) && ("length" in v);
+            if(result)
+            {
+                var len = v.length;
+                result = Number.isInteger(len)
+                    && (
+                        0 === len
+                        || (len > 0 && ((len - 1) in v))
+                    )
+                ;
+            }
+        }
+
+        return result;
     }
 
     return {
