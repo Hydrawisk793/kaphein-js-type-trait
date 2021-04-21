@@ -31,6 +31,15 @@ module.exports = (function ()
 
     /**
      *  @param {*} v
+     *  @returns {v is boolean}
+     */
+    function isBoolean(v)
+    {
+        return "boolean" === typeof v || v instanceof Boolean;
+    }
+
+    /**
+     *  @param {*} v
      *  @returns {v is number}
      */
     function isNumber(v)
@@ -87,6 +96,7 @@ module.exports = (function ()
         isUndefined : isUndefined,
         isDefinedAndNotNull : isDefinedAndNotNull,
         isNonNullObject : isNonNullObject,
+        isBoolean : isBoolean,
         isNumber : isNumber,
         isString : isString,
         isArray : isArray,

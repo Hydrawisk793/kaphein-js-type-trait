@@ -3,6 +3,7 @@ describe("kaphein-js-type-trait", function ()
     describe("isUndefined", require("./suites/is-undefined.test").bind(this));
     describe("isDefinedAndNotNull", require("./suites/is-defined-and-not-null.test").bind(this));
     describe("isNonNullObject", require("./suites/is-non-null-object.test").bind(this));
+    describe("isBoolean", require("./suites/is-boolean.test").bind(this));
     describe("isNumber", require("./suites/is-number.test").bind(this));
     describe("isString", require("./suites/is-string.test").bind(this));
     describe("isArray", require("./suites/is-array.test").bind(this));

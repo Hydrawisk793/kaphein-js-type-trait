@@ -12,6 +12,10 @@ export declare function isNonNullObject(
     v : any
 ) : v is NonNullable<object>;
 
+export declare function isBoolean(
+    v : any
+) : v is boolean;
+
 export declare function isNumber(
     v : any
 ) : v is number;

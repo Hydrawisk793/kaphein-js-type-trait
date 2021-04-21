@@ -9,6 +9,7 @@ var getToStringTag = require("./get-to-string-tag").getToStringTag;
 exports.isUndefined = primitiveTypeTrait.isUndefined;
 exports.isDefinedAndNotNull = primitiveTypeTrait.isDefinedAndNotNull;
 exports.isNonNullObject = primitiveTypeTrait.isNonNullObject;
+exports.isBoolean = primitiveTypeTrait.isBoolean;
 exports.isNumber = primitiveTypeTrait.isNumber;
 exports.isString = primitiveTypeTrait.isString;
 exports.isArray = primitiveTypeTrait.isArray;
