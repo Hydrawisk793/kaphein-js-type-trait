@@ -62,7 +62,9 @@ module.exports = (function ()
      */
     function isArray(v)
     {
-        return "[object Array]" === Object.prototype.toString.call(v);
+        return "[object Array]" === Object.prototype.toString.call(v)
+            || (isReferenceType(v) && v instanceof Array)
+        ;
     }
 
     /**
