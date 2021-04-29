@@ -17,7 +17,7 @@ module.exports = function ()
         expect(isCallable(new Function("l", "r", "return l + r"))).to.equal(true);
     });
 
-    it("should return true on an object that has 'call', 'apply' and 'bind'.", function ()
+    it("should return true on an object that has 'call' and 'apply'.", function ()
     {
         const callable = {
             foo : 10,
@@ -32,35 +32,33 @@ module.exports = function ()
                 var args = arguments[1] || [];
 
                 return (thisArg.foo) * (args[0] + args[1]);
-            },
-
-            bind : function bind(thisArg)
-            {
-                var _slice = Array.prototype.slice;
-                var args = _slice.call(arguments, 1);
-
-                function T()
-                {}
-
-                var thisRef = this;
-                function W()
-                {
-                    return thisRef.apply(
-                        (this instanceof T ? this : thisArg),
-                        args.concat(_slice.call(arguments))
-                    );
-                }
-
-                if(this.prototype)
-                {
-                    T.prototype = this.prototype;
-                }
-                W.prototype = new T();
-
-                return W;
             }
         };
 
         expect(isCallable(callable)).to.equal(true);
+
+        const onceCallable = {
+            foo : 10,
+
+            call : function call(thisArg)
+            {
+                return this.apply(thisArg, [arguments[1], arguments[2]]);
+            },
+
+            apply : function apply(thisArg, args)
+            {
+                delete this.call;
+                delete this.apply;
+
+                args = args || [];
+                var result = (thisArg.foo) * (args[0] + args[1]);
+
+                return result;
+            }
+        };
+
+        expect(isCallable(onceCallable)).to.equal(true);
+        expect(onceCallable.call(onceCallable, 1, 2)).to.equal(30);
+        expect(isCallable(onceCallable)).to.equal(false);
     });
 };

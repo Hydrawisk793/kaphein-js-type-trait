@@ -14,11 +14,8 @@ module.exports = (function ()
             isFunction(v)
             || (
                 isNonNullObject(v)
-                && (
-                    ("call" in v)
-                    && ("apply" in v)
-                    && ("bind" in v)
-                )
+                && ("call" in v)
+                && ("apply" in v)
             )
         );
     }
