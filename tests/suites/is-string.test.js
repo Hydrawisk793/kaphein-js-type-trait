@@ -10,10 +10,10 @@ module.exports = function ()
         expect(isString("foo")).to.equal(true);
     });
 
-    it("should return true on instances of String class.", function ()
+    it("should return false on instances of `String` class.", function ()
     {
-        expect(isString(new String())).to.equal(true);
-        expect(isString(new String(""))).to.equal(true);
-        expect(isString(new String("foo"))).to.equal(true);
+        expect(isString(new String())).to.equal(false);
+        expect(isString(new String(""))).to.equal(false);
+        expect(isString(new String("foo"))).to.equal(false);
     });
 };

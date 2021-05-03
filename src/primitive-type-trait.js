@@ -35,7 +35,7 @@ module.exports = (function ()
      */
     function isBoolean(v)
     {
-        return "boolean" === typeof v || v instanceof Boolean;
+        return "boolean" === typeof v;
     }
 
     /**
@@ -44,7 +44,7 @@ module.exports = (function ()
      */
     function isNumber(v)
     {
-        return "number" === typeof v || v instanceof Number;
+        return "number" === typeof v;
     }
 
     /**
@@ -53,7 +53,7 @@ module.exports = (function ()
      */
     function isString(v)
     {
-        return "string" === typeof v || v instanceof String;
+        return "string" === typeof v;
     }
 
     /**
@@ -73,7 +73,7 @@ module.exports = (function ()
      */
     function isFunction(v)
     {
-        return "function" === typeof v || v instanceof Function;
+        return "function" === typeof v;
     }
 
     /**
