@@ -1,6 +1,3 @@
-var primitiveTypeTrait = require("./primitive-type-trait");
-var isArray = primitiveTypeTrait.isArray;
-
 module.exports = (function ()
 {
     /**
@@ -8,31 +5,24 @@ module.exports = (function ()
      */
     function isIterable(v)
     {
-        var result;
-
-        switch(typeof v)
+        var result = ("function" === typeof Symbol && "iterator" in Symbol);
+        if(result)
         {
-        case "undefined":
-            result = false;
-            break;
-        case "function":
-        case "object":
-            result = (
-                null !== v
-                && (
-                    isArray(v)
-                    || (
-                        ("function" === typeof Symbol && "iterator" in Symbol)
-                        && Symbol.iterator in v
-                    )
-                )
-            );
-            break;
-        case "string":
-            result = true;
-            break;
-        default:
-            result = false;
+            switch(typeof v)
+            {
+            case "undefined":
+                result = false;
+                break;
+            case "function":
+            case "object":
+                result = null !== v && Symbol.iterator in v;
+                break;
+            case "string":
+                result = Symbol.iterator in String.prototype;
+                break;
+            default:
+                result = false;
+            }
         }
 
         return result;

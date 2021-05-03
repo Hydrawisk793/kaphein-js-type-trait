@@ -26,7 +26,7 @@ module.exports = function ()
         expect(isIterable(new String("foo"))).to.equal(true);
     });
 
-    it("should return true on an instance of a class that inherits String class.", function ()
+    it("should return true on an instance of a class that inherits `String` class.", function ()
     {
         class Foo extends String
         {
@@ -82,5 +82,39 @@ module.exports = function ()
         }
 
         expect(isIterable(gen())).to.equal(true);
+    });
+
+    it("should return false if `Symbol.iterator` is not supported.", function ()
+    {
+        /* global window */
+
+        const g = globalThis || global || window;
+        const Symbol = g.Symbol;
+        try
+        {
+            if(Symbol)
+            {
+                delete g.Symbol;
+            }
+
+            expect(isIterable([])).to.equal(false);
+        }
+        finally
+        {
+            g.Symbol = Symbol;
+        }
+    });
+
+    it(["should return false",
+        "if the argument does not have `Symbol.iterator`",
+        "even if the argument is a primitive value."].join(" "),
+    function ()
+    {
+        const f = String.prototype[Symbol.iterator];
+        delete String.prototype[Symbol.iterator];
+        expect(isIterable("foo")).to.equal(false);
+
+        String.prototype[Symbol.iterator] = f;
+        expect(isIterable("foo")).to.equal(true);
     });
 };
