@@ -12,6 +12,7 @@ module.exports = (function ()
         output : {
             filename : "index.js",
             path : path.resolve(__dirname, outputDirectoryName),
+            chunkFormat : "commonjs",
             library : {
                 name : "kapheinJsTypeTrait",
                 type : "umd",
